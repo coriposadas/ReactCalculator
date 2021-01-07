@@ -37,7 +37,7 @@ const Calculator = () => {
   const percentage = () => {
     setNextValue(parseFloat(nextValue) / 100);
     if (prevValue && nextValue === "") {
-      setPrevValue(parseFloat(prevValue) / 100);
+      return;
     }
   };
   const plusMinus = () => {
