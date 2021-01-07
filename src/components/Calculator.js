@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CalculatorButtons from "./CalculatorButtons";
 import "./Calculator.css";
 
 const Calculator = () => {
-  const [prevValue, setPrevValue] = useState(null);
-  const [nextValue, setNextValue] = useState("0");
+  const [prevValue, setPrevValue] = useState("0");
+  const [nextValue, setNextValue] = useState("");
   const [operation, setOperation] = useState(null);
-
-  useEffect(() => {}, [operation, nextValue, prevValue]);
 
   const CalculatorOperations = {
     "/": (firstValue, secondValue) => firstValue / secondValue,
     "*": (firstValue, secondValue) => firstValue * secondValue,
     "+": (firstValue, secondValue) => firstValue + secondValue,
     "-": (firstValue, secondValue) => firstValue - secondValue,
-    "=": secondValue => secondValue
+    "=": (firstValue, secondValue) => secondValue
   };
 
   const performOperation = () => {
@@ -46,8 +44,8 @@ const Calculator = () => {
     setNextValue(parseFloat(nextValue) * -1);
   };
   const clear = () => {
-    setNextValue("0");
-    setPrevValue(0);
+    setNextValue("");
+    setPrevValue("0");
   };
 
   const handleOperation = value => {
